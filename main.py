@@ -10,6 +10,8 @@ import kuntoilija
 import fitness
 import timetools
 
+# TODO: Import some library able to plot trends and make it as widget in the UI
+
 # Class for the main window
 class MainWindow(QtWidgets.QMainWindow):
     
@@ -34,7 +36,7 @@ class MainWindow(QtWidgets.QMainWindow):
         self.waistSB = self.waistSpinBox
         self.pelvisSB = self.pelvisSpinBox
 
-        # Set the measuring date to current date
+        # TODO: Disable Calculate button until values have been edited
         self.calculatePB = self.calculatePushButton
         self.calculatePB.clicked.connect(self.calculateAll)        
         self.savePB = self.savePushButton
@@ -69,11 +71,13 @@ class MainWindow(QtWidgets.QMainWindow):
 
         self.showBmiLabel.setText(str(bmi))
 
+    # TODO: Make this method to save results to a disk drive
     # Saves data to disk
     def saveData(self):
         pass
 
 if __name__ == "__main__":
+
     # Create the application
     app = QtWidgets.QApplication(sys.argv)
 
