@@ -59,6 +59,12 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="displayFormat">
+     <string>yyyy-MM-dd</string>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QLabel" name="measuringDateLabel">
     <property name="geometry">
@@ -201,7 +207,7 @@
      <string>Laske</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="saveButton">
+   <widget class="QPushButton" name="savePushButton">
     <property name="geometry">
      <rect>
       <x>460</x>
@@ -222,6 +228,12 @@
       <width>110</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="displayFormat">
+     <string>yyyy-MM-dd</string>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="birthDateLabel">
@@ -249,6 +261,16 @@
     <property name="placeholderText">
      <string>Valitse sukupuoli</string>
     </property>
+    <item>
+     <property name="text">
+      <string>Mies</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Nainen</string>
+     </property>
+    </item>
    </widget>
    <widget class="QLabel" name="showBmiLabel">
     <property name="geometry">
@@ -273,7 +295,7 @@
      <rect>
       <x>30</x>
       <y>350</y>
-      <width>131</width>
+      <width>141</width>
       <height>21</height>
      </rect>
     </property>
@@ -363,7 +385,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>
