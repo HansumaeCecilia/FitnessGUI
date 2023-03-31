@@ -88,6 +88,12 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <double>100.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>400.000000000000000</double>
+    </property>
    </widget>
    <widget class="QLabel" name="heightLabel">
     <property name="geometry">
@@ -110,6 +116,12 @@
       <width>62</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <double>20.000000000000000</double>
+    </property>
+    <property name="maximum">
+     <double>300.990000000000009</double>
     </property>
    </widget>
    <widget class="QLabel" name="weightLabel">
@@ -147,6 +159,12 @@
       <height>22</height>
      </rect>
     </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>100</number>
+    </property>
    </widget>
    <widget class="QSpinBox" name="waistSpinBox">
     <property name="geometry">
@@ -156,6 +174,12 @@
       <width>42</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>30</number>
+    </property>
+    <property name="maximum">
+     <number>200</number>
     </property>
    </widget>
    <widget class="QLabel" name="waistLabel">
@@ -179,6 +203,12 @@
       <width>42</width>
       <height>22</height>
      </rect>
+    </property>
+    <property name="minimum">
+     <number>50</number>
+    </property>
+    <property name="maximum">
+     <number>200</number>
     </property>
    </widget>
    <widget class="QLabel" name="pelvisLabel">

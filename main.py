@@ -8,6 +8,7 @@ from PyQt5 import QtWidgets # UI elements' functionality
 from PyQt5.uic import loadUi
 import kuntoilija
 import fitness
+import timetools
 
 # Class for the main window
 class MainWindow(QtWidgets.QMainWindow):
@@ -25,13 +26,15 @@ class MainWindow(QtWidgets.QMainWindow):
         self.nameLE = self.nameLineEdit
         self.birthDE = self.birthDateEdit
         self.genderCB = self.genderComboBox
-        self.measuringDE = self.measuringDateEdit        
+        self.measuringDE = self.measuringDateEdit
+        self.measuringDE.setDate(QtCore.QDate.currentDate())        
         self.heightDSB = self.heightDoubleSpinBox
         self.weightDSB = self.weightDoubleSpinBox
         self.neckSB = self.neckSpinBox
         self.waistSB = self.waistSpinBox
         self.pelvisSB = self.pelvisSpinBox
 
+        # Set the measuring date to current date
         self.calculatePB = self.calculatePushButton
         self.calculatePB.clicked.connect(self.calculateAll)        
         self.savePB = self.savePushButton
@@ -40,15 +43,31 @@ class MainWindow(QtWidgets.QMainWindow):
     # Define slots, ie. methods
     # Calculates BMI, Finnish and US fat percetanges and updates corresponding labels
     def calculateAll(self):
+        name = self.nameLE.text()
         height = self.heightDSB.value() # Spinbox value as integer
-        weight = self.weightDSB.value()                     
-        age = 100
-        gender = self.genderCB.currentText()
-        measuring_date = str(self.measuringDE.date().getDate())      
-        # athelete = kuntoilija.Kuntoilija()
-        # bmi = athelete.bmi
+        weight = self.weightDSB.value()
 
-        self.showBmiLabel.setText(measuring_date)
+        # Convert birthday to ISO string using QtCore's methods
+        birthday = self.birthDE.date().toString(format=QtCore.Qt.ISODate)        
+        
+        # Set gender value according to ComboBox value
+        gendertext = self.genderCB.currentText()
+        if gendertext == 'Mies':
+            gender = 1
+        else:
+            gender = 0
+        
+        # Convert measuring data to ISO string
+        measuringDate = self.measuringDE.date().toString(format=QtCore.Qt.ISODate)
+        
+        # Calculate time difference with out homemade tools
+        age = timetools.datediff2(birthday, measuringDate, 'year')
+
+        # Create an athelete from Kuntoilija class
+        athelete = kuntoilija.Kuntoilija(name, height, weight, age, gender, measuringDate)
+        bmi = athelete.bmi
+
+        self.showBmiLabel.setText(str(bmi))
 
     # Saves data to disk
     def saveData(self):
