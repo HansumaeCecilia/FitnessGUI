@@ -3,9 +3,9 @@
 
 # LIBRARIES AND MODULES
 import sys
-from PyQt6 import QtCore # Core functionality of Qt
-from PyQt6 import QtWidgets # UI elements' functionality
-from PyQt6.uic.load_ui import loadUi
+from PyQt5 import QtCore # Core functionality of Qt
+from PyQt5 import QtWidgets # UI elements' functionality
+from PyQt5.uic.load_ui import loadUi
 
 # Class for the main window
 class MainWindow(QtWidgets.QMainWindow):
@@ -25,7 +25,7 @@ class MainWindow(QtWidgets.QMainWindow):
 
     # Define slots, ie. methods
     def calculateAll(self):
-        self.showBmiLabel.setValue('100')
+        self.showBmiLabel.setText('100')
 
 if __name__ == "__main__":
     # Create the application

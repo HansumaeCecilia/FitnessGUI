@@ -188,7 +188,7 @@
      <string>Lantio</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="calculateButton">
+   <widget class="QPushButton" name="calculatePushButton">
     <property name="geometry">
      <rect>
       <x>370</x>
