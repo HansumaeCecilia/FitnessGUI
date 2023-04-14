@@ -65,6 +65,24 @@ class MainWindow(QW.QMainWindow):
         if self.genderCB.currentText() == '':
             self.calculatePB.setEnabled(False)
 
+        if self.heightDSB.value() == 100:
+            self.calculatePB.setEnabled(False)
+
+        if self.weightDSB.value() == 20:
+            self.calculatePB.setEnabled(False)
+
+        if self.neckSB.value() == 10:
+            self.calculatePB.setEnabled(False)
+
+        if self.waistSB.value() == 30:
+            self.calculatePB.setEnabled(False)
+
+        if self.pelvisSB.value() == 50:
+            self.calculatePB.setEnabled(False)
+
+        if self.genderCB.currentText() == 'Mies':
+            self.pelvisSB.setEnabled(False)
+
     # Calculates BMI, Finnish and US fat percetanges and updates corresponding labels
     def calculateAll(self):
         name = self.nameLE.text()
