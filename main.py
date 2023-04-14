@@ -34,13 +34,20 @@ class MainWindow(QW.QMainWindow):
         self.genderCB.currentTextChanged.connect(self.activateCalculatePB)
 
         self.measuringDE = self.measuringDateEdit
+
+        # Set measuring date to current date
         self.measuringDE.setDate(QtCore.QDate.currentDate())
 
-        self.heightDSB = self.heightDoubleSpinBox
-        self.weightDSB = self.weightDoubleSpinBox
+        self.heightDSB = self.heightDoubleSpinBox        
+        self.weightDSB = self.weightDoubleSpinBox  
+        self.weightDSB.valueChanged.connect(self.activateCalculatePB)      
         self.neckSB = self.neckSpinBox
+        self.neckSB.valueChanged.connect(self.activateCalculatePB)
         self.waistSB = self.waistSpinBox
+        self.waistSB.valueChanged.connect(self.activateCalculatePB)
         self.pelvisSB = self.pelvisSpinBox
+        self.pelvisSB.setEnabled(False)
+        self.pelvisSB.valueChanged.connect(self.activateCalculatePB)
 
         # TODO: Disable Calculate button until values have been edited
         self.calculatePB = self.findChild(QW.QPushButton, 'calculatePushButton')
@@ -77,12 +84,11 @@ class MainWindow(QW.QMainWindow):
         if self.waistSB.value() == 30:
             self.calculatePB.setEnabled(False)
 
-        if self.pelvisSB.value() == 50:
-            self.calculatePB.setEnabled(False)
-
-        if self.genderCB.currentText() == 'Mies':
-            self.pelvisSB.setEnabled(False)
-
+        if self.genderCB.currentText() == 'Nainen':
+            self.pelvisSB.setEnabled(True)
+            if self.genderCB.currentText() == 50:
+                self.calculatePB.setEnabled(False)
+        
     # Calculates BMI, Finnish and US fat percetanges and updates corresponding labels
     def calculateAll(self):
         name = self.nameLE.text()
@@ -107,11 +113,30 @@ class MainWindow(QW.QMainWindow):
         # Calculate time difference with out homemade tools
         age = timetools.datediff2(birthday, measuringDate, 'year')
 
-        # Create an athelete from Kuntoilija class
-        athelete = kuntoilija.Kuntoilija(name, height, weight, age, gender, measuringDate)
-        bmi = athelete.bmi
+        neck = self.neckSB.value()
+        waist = self.waistSB.value()
+        pelvis = self.pelvisSB.value()
 
-        self.showBmiLabel.setText(str(bmi))
+        if age >= 18:
+            # Create an athelete from Kuntoilija class
+            athelete = kuntoilija.Kuntoilija(name, height, weight, age, gender, measuringDate)
+            bmi = athelete.bmi
+        else:
+            # Create the athelete from JunioriKuntoilija class for age under 18
+            athelete = kuntoilija.JunioriKuntoilija()
+        
+        bmi = athelete.bmi
+        self.showBmiLabel.setText(str(bmi))      
+
+        fiFatPercentage = athelete.rasvaprosentti()         
+
+        if gender == 1:
+            usaFatPercentage = athelete.usa_rasvaprosentti_mies(height, waist, neck)
+        else:
+            usaFatPercentage = athelete.usa_rasvaprosentti_nainen(height, waist, pelvis, neck)        
+        
+        self.showFatFiLabel.setText(str(fiFatPercentage))
+        self.showFatUsLabel.setText(str(usaFatPercentage))
 
     # TODO: Make this method to save results to a disk drive
     # Saves data to disk
