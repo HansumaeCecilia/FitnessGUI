@@ -38,7 +38,8 @@ class MainWindow(QW.QMainWindow):
         # Set measuring date to current date
         self.measuringDE.setDate(QtCore.QDate.currentDate())
 
-        self.heightDSB = self.heightDoubleSpinBox        
+        self.heightDSB = self.heightDoubleSpinBox  
+        self.heightDSB.valueChanged.connect(self.activateCalculatePB)      
         self.weightDSB = self.weightDoubleSpinBox  
         self.weightDSB.valueChanged.connect(self.activateCalculatePB)      
         self.neckSB = self.neckSpinBox
@@ -48,6 +49,11 @@ class MainWindow(QW.QMainWindow):
         self.pelvisSB = self.pelvisSpinBox
         self.pelvisSB.setEnabled(False)
         self.pelvisSB.valueChanged.connect(self.activateCalculatePB)
+        
+        '''
+        self.minHeightLE = self.minHeightLabel   
+        self.minHeightLE.setVisible(False)        
+        '''                   
 
         # TODO: Disable Calculate button until values have been edited
         self.calculatePB = self.findChild(QW.QPushButton, 'calculatePushButton')
@@ -72,8 +78,8 @@ class MainWindow(QW.QMainWindow):
         if self.genderCB.currentText() == '':
             self.calculatePB.setEnabled(False)
 
-        if self.heightDSB.value() == 100:
-            self.calculatePB.setEnabled(False)
+        if self.heightDSB.value() == 100:            
+            self.calculatePB.setEnabled(False)       
 
         if self.weightDSB.value() == 20:
             self.calculatePB.setEnabled(False)
@@ -88,6 +94,12 @@ class MainWindow(QW.QMainWindow):
             self.pelvisSB.setEnabled(True)
             if self.genderCB.currentText() == 50:
                 self.calculatePB.setEnabled(False)
+
+    '''
+    def showMinHeight(self):        
+        if self.heightDSB.value == 150:
+            self.minHeightLE.setVisible(True)    
+    '''    
         
     # Calculates BMI, Finnish and US fat percetanges and updates corresponding labels
     def calculateAll(self):
