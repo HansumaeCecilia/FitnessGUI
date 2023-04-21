@@ -132,29 +132,24 @@ class MainWindow(QW.QMainWindow):
         waist = self.waistSB.value()
         hip = self.hipSB.value()
 
-        athelete = kuntoilija.Kuntoilija(name, height, weight, age, gender, neck, waist, hip, measuringDate)
+        athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, neck, waist, hip, measuringDate)
         
-        bmi = athelete.bmi
+        bmi = athlete.bmi
         self.showBmiLabel.setText(str(bmi))      
         
-        fiFatPercentage = athelete.fi_rasva
-        usaFatPercentage = athelete.usa_rasva
+        fiFatPercentage = athlete.fi_rasva
+        usaFatPercentage = athlete.usa_rasva
 
         self.fatFiLabel.setText(str(fiFatPercentage))
-        self.fatUsLabel.setText(str(usaFatPercentage))         
+        self.fatUsLabel.setText(str(usaFatPercentage))                 
 
-        # if gender == 1:
-        #     usaFatPercentage = athelete.usa_rasvaprosentti_mies(height, waist, neck)
-        # else:
-        #     usaFatPercentage = athelete.usa_rasvaprosentti_nainen(height, waist, hip, neck)        
-        
-        # self.showFatFiLabel.setText(str(fiFatPercentage))
-        # self.showFatUsLabel.setText(str(usaFatPercentage))
+        self.dataRow = self.constructData(athlete)
+        print(self.dataRow)        
 
-    def constructData(self, athlete, fiFat, usaFat):
+    def constructData(self, athlete):
         athlete_data_row = {'nimi': athlete.nimi, 'pituus': athlete.pituus, 'paino': athlete.paino,
                             'ika': athlete.ika, 'sukupuoli': athlete.sukupuoli, 'pvm': athlete.punnitus_paiva,
-                            'bmi': athlete.bmi, 'rasvaprosenttiFi': fiFat, 'rasvaprosenttiUs': usaFat}
+                            'bmi': athlete.bmi, 'rasvaprosenttiFi': athlete.fi_rasva, 'rasvaprosenttiUs': athlete.usa_rasva}
         return athlete_data_row
 
     # Saves data to disk
