@@ -1,0 +1,13 @@
+[
+    {
+        "nimi": "Essi",
+        "pituus": 160.0,
+        "paino": 55.0,
+        "ika": 26.273972602739725,
+        "sukupuoli": 0,
+        "pvm": "2023-04-21",
+        "bmi": 21.5,
+        "rasvaprosenttiFi": 26.4,
+        "rasvaprosenttiUs": 22.0
+    }
+]
