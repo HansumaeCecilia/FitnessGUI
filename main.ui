@@ -195,7 +195,7 @@
      <string>Vyötärö</string>
     </property>
    </widget>
-   <widget class="QSpinBox" name="pelvisSpinBox">
+   <widget class="QSpinBox" name="hipSpinBox">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -211,7 +211,7 @@
      <number>200</number>
     </property>
    </widget>
-   <widget class="QLabel" name="pelvisLabel">
+   <widget class="QLabel" name="hipLabel">
     <property name="geometry">
      <rect>
       <x>310</x>
@@ -420,7 +420,7 @@
    </widget>
    <widget class="QLabel" name="minHeightLabel">
     <property name="enabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
     <property name="geometry">
      <rect>
