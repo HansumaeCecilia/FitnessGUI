@@ -25,7 +25,7 @@ def laske_bmi(paino, pituus):
 
 # Määritellään funktio aikuisen kehonrasvaprosentin laskemiseen
 def aikuisen_rasvaprosentti(bmi, ika, sukupuoli):
-    """_summary_
+    """Laskee aikuisen rasvaprosentin
 
     Args:
         bmi (float): painoindeksi
