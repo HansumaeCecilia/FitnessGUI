@@ -1,4 +1,4 @@
-# ROUTINES TO CREATE, WRITE AND READ ATHLETE DATA FILE
+# ROUTINES TO CREATE, WRITE AND READ JSON ATHLETE DATA FILE
 # ====================================================
 
 # LIBRARIES AND MODULES
@@ -12,7 +12,7 @@ class ProcessJsonFile():
         pass
 
     def saveData(self, file, data):
-        """ Saves all athlete data to disk
+        """Saves all athlete data to disk
 
         Args:
             file (str): File's name
@@ -25,7 +25,7 @@ class ProcessJsonFile():
         return status
     
     def readData(self, file):
-        """ Reads athelete data from file
+        """Reads athelete data from file
 
         Args:
             file (str): File's name
@@ -37,7 +37,7 @@ class ProcessJsonFile():
         return data
 
     def appendData(self, file, data):
-        """ Adds a new json object to the file
+        """Adds a new json object to the file
 
         Args:
             file (str): File's name
