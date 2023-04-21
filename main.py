@@ -134,7 +134,7 @@ class MainWindow(QW.QMainWindow):
         # Convert measuring data to ISO string
         measuringDate = self.measuringDE.date().toString(format=QtCore.Qt.ISODate)
         
-        # Calculate time difference with out homemade tools
+        # Calculate time difference with our homemade tools
         age = timetools.datediff2(birthday, measuringDate, 'year')
 
         neck = self.neckSB.value()
@@ -166,7 +166,17 @@ class MainWindow(QW.QMainWindow):
         self.dataList.append(self.dataRow)
         jsonfile2 = athlete_file.ProcessJsonFile()
         status = jsonfile2.saveData('athleteData.json', self.dataList)
-        print(status)
+        zeroDate = QtCore.QDate(1900, 1, 1)
+        self.birthDE.setDate(zeroDate)
+        zeroDate2 = (QtCore.QDate.currentDate())
+        self.measuringDE.setDate(zeroDate2)
+        self.nameLE.clear()
+        self.genderCB.clear()       
+        self.heightDSB.setValue(100)
+        self.weightDSB.setValue(20)
+        self.neckSB.setValue(10)
+        self.waistSB.setValue(30)
+        self.hipSB.setValue(50)        
 
 if __name__ == "__main__":
 

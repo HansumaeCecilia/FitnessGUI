@@ -9,5 +9,38 @@
         "bmi": 21.5,
         "rasvaprosenttiFi": 26.4,
         "rasvaprosenttiUs": 22.0
+    },
+    {
+        "nimi": "Cessi",
+        "pituus": 163.0,
+        "paino": 55.0,
+        "ika": 28.115068493150684,
+        "sukupuoli": 0,
+        "pvm": "2023-04-21",
+        "bmi": 20.7,
+        "rasvaprosenttiFi": 25.9,
+        "rasvaprosenttiUs": 15.3
+    },
+    {
+        "nimi": "Essi",
+        "pituus": 160.0,
+        "paino": 55.0,
+        "ika": 28.306849315068494,
+        "sukupuoli": 0,
+        "pvm": "2023-04-21",
+        "bmi": 21.5,
+        "rasvaprosenttiFi": 26.9,
+        "rasvaprosenttiUs": 22.0
+    },
+    {
+        "nimi": "Essi",
+        "pituus": 160.0,
+        "paino": 55.0,
+        "ika": 28.265753424657536,
+        "sukupuoli": 0,
+        "pvm": "2023-04-12",
+        "bmi": 21.5,
+        "rasvaprosenttiFi": 26.9,
+        "rasvaprosenttiUs": 22.0
     }
 ]
