@@ -46,9 +46,9 @@ class MainWindow(QW.QMainWindow):
         self.neckSB.valueChanged.connect(self.activateCalculatePB)
         self.waistSB = self.waistSpinBox
         self.waistSB.valueChanged.connect(self.activateCalculatePB)
-        self.pelvisSB = self.pelvisSpinBox
-        self.pelvisSB.setEnabled(False)
-        self.pelvisSB.valueChanged.connect(self.activateCalculatePB)
+        self.hipSB = self.hipSpinBox
+        self.hipSB.setEnabled(False)
+        self.hipSB.valueChanged.connect(self.activateCalculatePB)
         
         '''
         self.minHeightLE = self.minHeightLabel   
@@ -91,7 +91,7 @@ class MainWindow(QW.QMainWindow):
             self.calculatePB.setEnabled(False)
 
         if self.genderCB.currentText() == 'Nainen':
-            self.pelvisSB.setEnabled(True)
+            self.hipSB.setEnabled(True)
             if self.genderCB.currentText() == 50:
                 self.calculatePB.setEnabled(False)
 
@@ -127,7 +127,7 @@ class MainWindow(QW.QMainWindow):
 
         neck = self.neckSB.value()
         waist = self.waistSB.value()
-        pelvis = self.pelvisSB.value()
+        hip = self.hipSB.value()
 
         if age >= 18:
             # Create an athelete from Kuntoilija class
@@ -145,12 +145,17 @@ class MainWindow(QW.QMainWindow):
         if gender == 1:
             usaFatPercentage = athelete.usa_rasvaprosentti_mies(height, waist, neck)
         else:
-            usaFatPercentage = athelete.usa_rasvaprosentti_nainen(height, waist, pelvis, neck)        
+            usaFatPercentage = athelete.usa_rasvaprosentti_nainen(height, waist, hip, neck)        
         
         self.showFatFiLabel.setText(str(fiFatPercentage))
         self.showFatUsLabel.setText(str(usaFatPercentage))
 
-    # TODO: Make this method to save results to a disk drive
+    def constructData(self, athlete, fiFat, usaFat):
+        athlete_data_row = {'nimi': athlete.nimi, 'pituus': athlete.pituus, 'paino': athlete.paino,
+                            'ika': athlete.ika, 'sukupuoli': athlete.sukupuoli, 'pvm': athlete.punnitus_paiva,
+                            'bmi': athlete.bmi, 'rasvaprosenttiFi': fiFat, 'rasvaprosenttiUs': usaFat}
+        return athlete_data_row
+
     # Saves data to disk
     def saveData(self):
         pass
