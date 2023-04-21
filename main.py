@@ -176,7 +176,10 @@ class MainWindow(QW.QMainWindow):
         self.weightDSB.setValue(20)
         self.neckSB.setValue(10)
         self.waistSB.setValue(30)
-        self.hipSB.setValue(50)        
+        self.hipSB.setValue(50)
+        self.savePB.setEnabled(False)
+
+        # TODO: Reset fat percentage values in UI after saving   
 
 if __name__ == "__main__":
 
