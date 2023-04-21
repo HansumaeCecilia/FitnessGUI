@@ -7,8 +7,8 @@ from PyQt5 import QtCore # Core functionality of Qt
 from PyQt5 import QtWidgets as QW # UI elements' functionality
 from PyQt5.uic import loadUi
 import kuntoilija
-import fitness
 import timetools
+import athlete_file # Home made module for processing data files
 
 # TODO: Import some library able to plot trends and make it as widget in the UI
 
@@ -66,6 +66,15 @@ class MainWindow(QW.QMainWindow):
         self.savePB.clicked.connect(self.saveData)
         self.savePB.setEnabled(False)
 
+        # Read data from file and save it to a list
+        self.dataList = []
+        jsonFile = athlete_file.ProcessJsonFile()
+        try:
+            data = jsonFile.readData('athleteData.json')
+            self.dataList = data[3]
+        except Exception as e:
+            data = (1, 'Error', str(e), self.dataList)              
+        
     # Define slots, ie. methods
     def activateCalculatePB(self):
         self.calculatePB.setEnabled(True)
@@ -154,7 +163,10 @@ class MainWindow(QW.QMainWindow):
 
     # Saves data to disk
     def saveData(self):
-        pass
+        self.dataList.append(self.dataRow)
+        jsonfile2 = athlete_file.ProcessJsonFile()
+        status = jsonfile2.saveData('athleteData.json', self.dataList)
+        print(status)
 
 if __name__ == "__main__":
 
