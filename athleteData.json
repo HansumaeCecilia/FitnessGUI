@@ -42,5 +42,16 @@
         "bmi": 21.5,
         "rasvaprosenttiFi": 26.9,
         "rasvaprosenttiUs": 22.0
+    },
+    {
+        "nimi": "Nora",
+        "pituus": 165.0,
+        "paino": 65.0,
+        "ika": 22.76164383561644,
+        "sukupuoli": 0,
+        "pvm": "2023-04-21",
+        "bmi": 23.9,
+        "rasvaprosenttiFi": 28.5,
+        "rasvaprosenttiUs": 25.6
     }
 ]
