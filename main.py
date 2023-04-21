@@ -94,6 +94,9 @@ class MainWindow(QW.QMainWindow):
             self.hipSB.setEnabled(True)
             if self.genderCB.currentText() == 50:
                 self.calculatePB.setEnabled(False)
+        
+        else:
+            self.hipSB.setEnabled(False)
 
     '''
     def showMinHeight(self):        
@@ -129,26 +132,24 @@ class MainWindow(QW.QMainWindow):
         waist = self.waistSB.value()
         hip = self.hipSB.value()
 
-        if age >= 18:
-            # Create an athelete from Kuntoilija class
-            athelete = kuntoilija.Kuntoilija(name, height, weight, age, gender, measuringDate)
-            bmi = athelete.bmi
-        else:
-            # Create the athelete from JunioriKuntoilija class for age under 18
-            athelete = kuntoilija.JunioriKuntoilija()
+        athelete = kuntoilija.Kuntoilija(name, height, weight, age, gender, neck, waist, hip, measuringDate)
         
         bmi = athelete.bmi
         self.showBmiLabel.setText(str(bmi))      
-
-        fiFatPercentage = athelete.rasvaprosentti()         
-
-        if gender == 1:
-            usaFatPercentage = athelete.usa_rasvaprosentti_mies(height, waist, neck)
-        else:
-            usaFatPercentage = athelete.usa_rasvaprosentti_nainen(height, waist, hip, neck)        
         
-        self.showFatFiLabel.setText(str(fiFatPercentage))
-        self.showFatUsLabel.setText(str(usaFatPercentage))
+        fiFatPercentage = athelete.fi_rasva
+        usaFatPercentage = athelete.usa_rasva
+
+        self.fatFiLabel.setText(str(fiFatPercentage))
+        self.fatUsLabel.setText(str(usaFatPercentage))         
+
+        # if gender == 1:
+        #     usaFatPercentage = athelete.usa_rasvaprosentti_mies(height, waist, neck)
+        # else:
+        #     usaFatPercentage = athelete.usa_rasvaprosentti_nainen(height, waist, hip, neck)        
+        
+        # self.showFatFiLabel.setText(str(fiFatPercentage))
+        # self.showFatUsLabel.setText(str(usaFatPercentage))
 
     def constructData(self, athlete, fiFat, usaFat):
         athlete_data_row = {'nimi': athlete.nimi, 'pituus': athlete.pituus, 'paino': athlete.paino,
