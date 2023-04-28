@@ -117,6 +117,15 @@ def dateTimeDiff2(start, end, unit):
     value = seconds / divider
     return value
 
+def sortWeekdays(weekday):
+    weekdayNumber = {'Monday': 1, 'Tuesday': 2, 'Wednesday': 3, 'Thursday': 4, 
+     'Friday': 5, 'Saturday': 6, 'Sunday': 7}
+    try:
+        value = f'{weekday} is the week\'s {weekdayNumber[weekday]}. day'
+    except Exception as e:
+        value = f'{weekday} is not a weekday, check your input'
+    return value
+
 if __name__ == "__main__":
 
     # Let's test date difference
