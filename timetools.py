@@ -31,8 +31,32 @@ def timediff(t1, t2):
     """
     t1 = datetime.datetime.strptime(t1, "%H:%M:%S")
     t2 = datetime.datetime.strptime(t2, "%H:%M:%S")
-    seconds = abs((t2 - t1).seconds) # Function calculates a timedelta, which only supports seconds and milliseconds
+
+    # To get absolute value when t2 greater than t1
+    if t2 > t1:
+        # Function calculates a timedelta, which only supports seconds and milliseconds
+        seconds = abs((t2 - t1).seconds) 
+    else:
+        seconds = abs((t1 - t2).seconds)
+
     hours = seconds / 3600 # A minute is 60 seconds, an hour is 60 minutes
+    return hours
+
+def dateTimeDiff(v1, v2):    
+    """Returns difference between two moments
+
+    Args:
+        v1 (str): time value in format YYYY-mm-dd hh:mm:ss
+        v2 (str): time value in format YYYY-mm-dd hh:mm:ss
+
+    Returns:
+        float: difference in hours
+    """
+    v1 = datetime.datetime.strptime(v1, "%Y-%m-%d %H:%M:%S")
+    v2 = datetime.datetime.strptime(v2, "%Y-%m-%d %H:%M:%S")
+    difference = abs(v2 - v1)
+    seconds = difference.total_seconds()
+    hours = seconds / 3600
     return hours
 
 def datediff2(d1, d2, unit):
@@ -88,3 +112,5 @@ if __name__ == "__main__":
 
     ero = timediff2(time1, time2, 'minute')
     print('Ero oli', ero, 'minuuttia')
+
+    print(dateTimeDiff('2023-04-28 10:00:00', '2023-04-29 11:00:00')), 'tuntia'
