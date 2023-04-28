@@ -36,3 +36,8 @@ def test_dateTimeDiff2():
     assert round(timetools.dateTimeDiff2('2023-04-27 12:00:00', '2023-04-28 14:00:00', 'hour')) == 26
     assert round(timetools.dateTimeDiff2('2023-04-27 12:00:00', '2023-04-28 13:30:00', 'minute')) == 1530
     assert round(timetools.dateTimeDiff2('2023-04-27 12:00:00', '2023-04-28 13:00:00', 'second')) == 90000
+
+def test_sortWeekdays():
+    assert timetools.sortWeekdays('Friday') == 'Friday is the week\'s 5. day'
+    input_value = 'Frida'
+    assert timetools.sortWeekdays(input_value) == 'Frida is not a weekday, check your input'
