@@ -443,8 +443,104 @@
      <height>21</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuTiedosto">
+    <property name="title">
+     <string>Tiedosto</string>
+    </property>
+    <widget class="QMenu" name="menuJaa">
+     <property name="title">
+      <string>Jaa</string>
+     </property>
+     <addaction name="actionFacebook"/>
+     <addaction name="actionTwitter"/>
+     <addaction name="actionInstagram"/>
+    </widget>
+    <widget class="QMenu" name="menuAsetukset">
+     <property name="title">
+      <string>Asetukset</string>
+     </property>
+     <addaction name="actionKieli"/>
+     <addaction name="actionUlkoasu"/>
+    </widget>
+    <addaction name="actionTulosta"/>
+    <addaction name="actionSulje"/>
+    <addaction name="menuJaa"/>
+    <addaction name="menuAsetukset"/>
+    <addaction name="actionY_tila"/>
+   </widget>
+   <widget class="QMenu" name="menuMuokkaa">
+    <property name="title">
+     <string>Muokkaa</string>
+    </property>
+    <addaction name="actionAutomaattinen_tallennus"/>
+    <addaction name="actionPoista_k_ytt_j"/>
+   </widget>
+   <addaction name="menuTiedosto"/>
+   <addaction name="menuMuokkaa"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionTulosta">
+   <property name="text">
+    <string>Tulosta...</string>
+   </property>
+  </action>
+  <action name="actionSulje">
+   <property name="text">
+    <string>Sulje</string>
+   </property>
+  </action>
+  <action name="actionFacebook">
+   <property name="text">
+    <string>Facebook</string>
+   </property>
+  </action>
+  <action name="actionTwitter">
+   <property name="text">
+    <string>Twitter</string>
+   </property>
+  </action>
+  <action name="actionInstagram">
+   <property name="text">
+    <string>Instagram</string>
+   </property>
+  </action>
+  <action name="actionKieli">
+   <property name="text">
+    <string>Kieli</string>
+   </property>
+  </action>
+  <action name="actionUlkoasu">
+   <property name="text">
+    <string>Ulkoasu</string>
+   </property>
+  </action>
+  <action name="actionY_tila">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Yötila</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Y</string>
+   </property>
+  </action>
+  <action name="actionAutomaattinen_tallennus">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Automaattinen tallennus</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+Shift+S</string>
+   </property>
+  </action>
+  <action name="actionPoista_k_ytt_j">
+   <property name="text">
+    <string>Poista käyttäjä...</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections/>
