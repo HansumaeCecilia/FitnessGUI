@@ -75,7 +75,7 @@ def datediff2(d1, d2, unit):
     difference = abs((d2 - d1).days) # Timedelta in days (abs makes sure there'll never be a negative number as answer)
     units = {'day': 1, 'year': 365, 'month': 30} # Dictionary for unit dividers
     divider = units[unit] # Choose by unit argument
-    value = difference / divider
+    value = round(difference / divider)
     return value
 
 def timediff2(t1, t2, unit):
