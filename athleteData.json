@@ -64,5 +64,126 @@
         "bmi": 25.6,
         "rasvaprosenttiFi": 28.5,
         "rasvaprosenttiUs": 28.65521046982193
+    },
+    {
+        "nimi": "Mika",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 60.8986301369863,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 28.5,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Mika",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 60.8986301369863,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 28.5,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Teppo Testi",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 23.35890410958904,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 19.9,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Teppo Testi",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 23.35890410958904,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 19.9,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Teppo Testi",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 23.35890410958904,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 19.9,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Teppo Testi",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 23.35890410958904,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 19.9,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Teppo Testi",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 23.35890410958904,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 19.9,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Teppo Testi",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 23.35890410958904,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 19.9,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Teppo Testi",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 23.35890410958904,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 19.9,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Teppo Testi",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 23.35890410958904,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 19.9,
+        "rasvaprosenttiUs": 28.7
+    },
+    {
+        "nimi": "Teppo Testi",
+        "pituus": 171.0,
+        "paino": 75.0,
+        "ika": 23.35890410958904,
+        "sukupuoli": 1,
+        "pvm": "2023-05-05",
+        "bmi": 25.6,
+        "rasvaprosenttiFi": 19.9,
+        "rasvaprosenttiUs": 28.7
     }
 ]
