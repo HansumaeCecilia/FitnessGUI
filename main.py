@@ -49,19 +49,18 @@ class MainWindow(QW.QMainWindow):
         self.hipSB = self.hipSpinBox
         self.hipSB.setEnabled(False)
         self.hipSB.valueChanged.connect(self.activateCalculatePB)
-        
-        '''
-        self.minHeightLE = self.minHeightLabel   
-        self.minHeightLE.setVisible(False)        
-        '''                   
 
-        # TODO: Disable Calculate button until values have been edited
+        # Create a status bar for showing informational messages
+        self.statusBar = QW.QStatusBar()
+        self.setStatusBar(self.statusBar)
+        self.statusBar.show()
+
+        # self.calculatePB = self.calculatePushButton
         self.calculatePB = self.findChild(QW.QPushButton, 'calculatePushButton')
         self.calculatePB.clicked.connect(self.calculateAll)
         self.calculatePB.setEnabled(False)           
 
-        # TODO: Disable Save button until values have been calculated     
-        #self.savePB = self.savePushButton
+        # self.savePB = self.savePushButton
         self.savePB = self.findChild(QW.QPushButton, 'savePushButton')
         self.savePB.clicked.connect(self.saveData)
         self.savePB.setEnabled(False)
@@ -164,8 +163,11 @@ class MainWindow(QW.QMainWindow):
     # Saves data to disk
     def saveData(self):
         self.dataList.append(self.dataRow)
+
+        # Save list to a json file
         jsonfile2 = athlete_file.ProcessJsonFile()
         status = jsonfile2.saveData('athleteData.json', self.dataList)
+        self.StatusBar.showMessage(status[1], 4000)
         zeroDate = QtCore.QDate(1900, 1, 1)
         self.birthDE.setDate(zeroDate)
         zeroDate2 = (QtCore.QDate.currentDate())
@@ -185,6 +187,7 @@ if __name__ == "__main__":
 
     # Create the application
     app = QW.QApplication(sys.argv)
+    app.setStyle('Fusion') # Use fusion style in form
 
   # Create the Main Window object from MainWindow class and show it on the screen
     appWindow = MainWindow()
