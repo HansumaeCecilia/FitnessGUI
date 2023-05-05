@@ -316,18 +316,18 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>270</y>
+      <y>240</y>
       <width>91</width>
       <height>16</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>12</pointsize>
+      <pointsize>11</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>0</string>
+     <string>Painoindeksi</string>
     </property>
    </widget>
    <widget class="QLabel" name="showFatFiLabel">
@@ -370,18 +370,18 @@
     <property name="geometry">
      <rect>
       <x>30</x>
-      <y>240</y>
+      <y>270</y>
       <width>91</width>
       <height>16</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>11</pointsize>
+      <pointsize>12</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Painoindeksi</string>
+     <string>0</string>
     </property>
    </widget>
    <widget class="QLabel" name="fatFiLabel">
@@ -433,6 +433,19 @@
      <string>Sukupuoli</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="testUiPushButton">
+    <property name="geometry">
+     <rect>
+      <x>590</x>
+      <y>190</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Testaa</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -455,28 +468,34 @@
      <addaction name="actionTwitter"/>
      <addaction name="actionInstagram"/>
     </widget>
-    <widget class="QMenu" name="menuAsetukset">
+    <widget class="QMenu" name="menuSettings">
      <property name="title">
       <string>Asetukset</string>
      </property>
-     <addaction name="actionKieli"/>
-     <addaction name="actionUlkoasu"/>
+     <addaction name="actionLanguage"/>
+     <addaction name="actionLayout"/>
     </widget>
     <addaction name="actionTulosta"/>
     <addaction name="actionSulje"/>
     <addaction name="menuJaa"/>
-    <addaction name="menuAsetukset"/>
+    <addaction name="menuSettings"/>
     <addaction name="actionY_tila"/>
    </widget>
    <widget class="QMenu" name="menuMuokkaa">
     <property name="title">
      <string>Muokkaa</string>
     </property>
-    <addaction name="actionAutomaattinen_tallennus"/>
-    <addaction name="actionPoista_k_ytt_j"/>
+    <addaction name="actionRestoreDefaults"/>
+   </widget>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>Ohjeet</string>
+    </property>
+    <addaction name="actionInstructions"/>
    </widget>
    <addaction name="menuTiedosto"/>
    <addaction name="menuMuokkaa"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionTulosta">
@@ -504,12 +523,12 @@
     <string>Instagram</string>
    </property>
   </action>
-  <action name="actionKieli">
+  <action name="actionLanguage">
    <property name="text">
     <string>Kieli</string>
    </property>
   </action>
-  <action name="actionUlkoasu">
+  <action name="actionLayout">
    <property name="text">
     <string>Ulkoasu</string>
    </property>
@@ -539,6 +558,22 @@
   <action name="actionPoista_k_ytt_j">
    <property name="text">
     <string>Poista käyttäjä...</string>
+   </property>
+  </action>
+  <action name="actionRestoreDefaults">
+   <property name="text">
+    <string>Palauta oletukset</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+D</string>
+   </property>
+  </action>
+  <action name="actionInstructions">
+   <property name="text">
+    <string>Ohje</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+H</string>
    </property>
   </action>
  </widget>
