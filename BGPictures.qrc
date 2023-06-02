@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="NaisMiesSlice">
+    <file>images/NaisSlice.png</file>
+    <file>images/MiesSlice.png</file>
+  </qresource>
+</RCC>
