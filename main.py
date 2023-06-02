@@ -10,8 +10,11 @@ import kuntoilija
 import timetools
 import athlete_file # Home made module for processing data files
 import instructions
+import BGPictures # Compiled resources for background images
+from PyQt5.QtGui import QPixmap # For converting picture files to pixmaps
 
-# TODO: Import some library able to plot trends and make it as widget in the UI
+# TODO: Make another resource file for the help window, build and import it
+# TODO: Import some library able to plot trends and make it a widget in the UI
 
 # Class for the main window
 class MainWindow(QW.QMainWindow):
@@ -35,25 +38,24 @@ class MainWindow(QW.QMainWindow):
         self.genderCB.currentTextChanged.connect(self.activateCalculatePB)
 
         self.measuringDE = self.measuringDateEdit
+        self.hipsL = self.hipsLabel
 
         # Set measuring date to current date
         self.measuringDE.setDate(QtCore.QDate.currentDate())
 
-        self.heightDSB = self.heightDoubleSpinBox  
-        self.heightDSB.valueChanged.connect(self.activateCalculatePB)      
-        self.weightDSB = self.weightDoubleSpinBox  
-        self.weightDSB.valueChanged.connect(self.activateCalculatePB)      
-        self.neckSB = self.neckSpinBox
-        self.neckSB.valueChanged.connect(self.activateCalculatePB)
-        self.waistSB = self.waistSpinBox
-        self.waistSB.valueChanged.connect(self.activateCalculatePB)
-        self.hipSB = self.hipSpinBox
-        self.hipSB.setEnabled(False)
-        self.hipSB.valueChanged.connect(self.activateCalculatePB)
+        # TODO: Change spin boxes to sliders and add labels to show values
+        self.heightVS = self.heightVerticalSlider
+        self.heightVS.valueChanged.connect(self.activateCalculatePB)
+        self.dialWeight = self.weightDial
+        self.dialWeight.valueChanged.connect(self.activateCalculatePB)
+        self.neckHS = self.neckHorizontalSlider
+        self.neckHS.valueChanged.connect(self.activateCalculatePB)
+        self.waistHS = self.neckHorizontalSlider
+        self.waistHS.valueChanged.connect(self.activateCalculatePB)
+        self.hipsHS = self.hipsHorizontalSlider
+        self.hipsHS.valueChanged.connect(self.activateCalculatePB)
 
-        self.bmiLE = self.bmiLabel
-        self.fatFiLE = self.fatFiLabel
-        self.fatUsLE = self.fatUsLabel
+        self.dimensionBox = self.dimensionFrame        
 
         # Create a status bar for showing informational messages
         self.statusBar = QW.QStatusBar()
@@ -66,8 +68,8 @@ class MainWindow(QW.QMainWindow):
         self.calculatePB.setEnabled(False)           
 
         # Temporary push button for inserting test values into controls
-        self.testPB = self.testUiPushButton
-        self.testPB.clicked.connect(self.insertTestValues)
+        # self.testPB = self.testUiPushButton
+        # self.testPB.clicked.connect(self.insertTestValues)
         
         # A push button for saving user data
         self.savePB = self.findChild(QW.QPushButton, 'savePushButton')
@@ -144,31 +146,29 @@ class MainWindow(QW.QMainWindow):
         if self.genderCB.currentText() == '':
             self.calculatePB.setEnabled(False)
 
-        if self.heightDSB.value() == 100:            
+        if self.heightVS.value() == 100:
+            self.calculatePB.setEnabled(False)
+        
+        if self.dialWeight.value() == 20:
+            self.calculatePB.setEnabled(False)
+        
+        if self.neckHS.value() == 10:
+            self.calculatePB.setEnabled(False)
+        
+        if self.waistHS.value() == 30:
             self.calculatePB.setEnabled(False)       
 
-        if self.weightDSB.value() == 20:
-            self.calculatePB.setEnabled(False)
+        if self.genderCB.currentText() == 'Nainen' or self.genderCB.currentText() == '':
+            self.hipsHS.show()
+            self.dimensionBox.setStyleSheet("background-image : url(images/NaisSlice.png)")
 
-        if self.neckSB.value() == 10:
-            self.calculatePB.setEnabled(False)
-
-        if self.waistSB.value() == 30:
-            self.calculatePB.setEnabled(False)
-
-        if self.genderCB.currentText() == 'Nainen':
-            self.hipSB.setEnabled(True)
-            if self.genderCB.currentText() == 50:
+            if self.hipsHS.value() == 50:
                 self.calculatePB.setEnabled(False)
         
         else:
-            self.hipSB.setEnabled(False)
-
-    '''
-    def showMinHeight(self):        
-        if self.heightDSB.value == 150:
-            self.minHeightLE.setVisible(True)    
-    '''    
+            self.hipsHS.hide()
+            self.hipsL.hide()
+            self.dimensionBox.setStyleSheet("background-image : url(images/MiesSlice.png)")
         
     def insertTestValues(self):
         # Set test values to all controls
@@ -176,16 +176,16 @@ class MainWindow(QW.QMainWindow):
         testBirthDay = QtCore.QDate(1999, 12, 31)
         self.birthDE.setDate(testBirthDay)
         self.genderCB.setCurrentText('Mies')
-        self.heightDSB.setValue(171)
-        self.weightDSB.setValue(75)
-        self.neckSB.setValue(27)
-        self.waistSB.setValue(90)
+        self.heightVS.setValue(171)
+        self.dialWeight.setValue(75)
+        self.neckHS.setValue(27)
+        self.waistHS.setValue(90)
 
     # Calculates BMI, Finnish and US fat percetanges and updates corresponding labels
     def calculateAll(self):
         name = self.nameLE.text()
-        height = self.heightDSB.value() # Spinbox value as integer
-        weight = self.weightDSB.value()
+        height = self.heightVS.value() # Spinbox value as integer
+        weight = self.dialWeight.value()
         self.calculatePB.setEnabled(False)
         self.savePB.setEnabled(True)
 
@@ -204,14 +204,14 @@ class MainWindow(QW.QMainWindow):
         
         # Calculate time difference with our homemade tools
         age = timetools.datediff2(birthday, measuringDate, 'year')        
-        neck = self.neckSB.value()
+        neck = self.neckHS.value()
         if neck < 21:
             # self.alert('Tarkista kaulan ympärysmitta', 'Kaulan ympärysmitta liian pieni',
             #             'Kaulan koko voi olla välillä 21 - 60 cm')
             self.showMessageBox('Tarkista kaulan ympärysmitta', 'Kaulan ympärysmitta virheellinen',
                                 'Sallitut arvot 21 - 60 cm', 'Warning')
-        waist = self.waistSB.value()
-        hip = self.hipSB.value()
+        waist = self.waistHS.value()
+        hip = self.hipsHS.value()
 
         athlete = kuntoilija.Kuntoilija(name, height, weight, age, gender, neck, waist, hip, measuringDate)
         
@@ -260,11 +260,11 @@ class MainWindow(QW.QMainWindow):
         self.measuringDE.setDate(zeroDate2)
         self.nameLE.clear()
         self.genderCB.clear()       
-        self.heightDSB.setValue(100)
-        self.weightDSB.setValue(20)
-        self.neckSB.setValue(10)
-        self.waistSB.setValue(30)
-        self.hipSB.setValue(50)
+        self.heightVS.setValue(100)
+        self.dialWeight.setValue(20)
+        self.neckHS.setValue(10)
+        self.waistHS.setValue(30)
+        self.hipsHS.setValue(50)
         self.savePB.setEnabled(False)        
         self.bmiLE.setText('0')
         self.fatFiLE.setText('0')
