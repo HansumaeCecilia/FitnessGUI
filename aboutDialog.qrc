@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="bgimage">
+    <file>images/Fitness GUI background.png</file>
+  </qresource>
+</RCC>
